@@ -12,6 +12,7 @@ M1834$X25K <- lubridate::period_to_seconds(hms(M1834$X25K))
 M1834$X30K <- lubridate::period_to_seconds(hms(M1834$X30K))
 M1834$X35K <- lubridate::period_to_seconds(hms(M1834$X35K))
 M1834$X40K <- lubridate::period_to_seconds(hms(M1834$X40K))
+M1834$Pace <- lubridate::period_to_seconds(hms(M1834$Pace))
 M1834$Official.Time <- lubridate::period_to_seconds(hms(M1834$Official.Time))
 M1834$Bib <- as.numeric(M1834$Bib)
 
@@ -19,7 +20,7 @@ M1834$Bib <- as.numeric(M1834$Bib)
 M1834 <- subset(M1834, M1834$M.F == "M" & M1834$Age >= 18 & M1834$Age <= 34 & M1834$Official.Time < 11100,)
 
 #Delete some no relevant columns
-M1834 <- subset(M1834, select = -c(State,Citizen,X.1,Half,Pace,Proj.Time))
+M1834 <- subset(M1834, select = -c(State,Citizen,X.1,Half,Proj.Time))
 summary(M1834)
 
 #Remove the rows that have null values in any column
@@ -29,21 +30,33 @@ M1834 <- na.omit(M1834)
 distance<-c("X5K","X10K","X15K","X20K","X25K","X30K","X35K","X40K","Official.Time")
 for (k in distance) {
     if (k != "X5K") {
-        colName <- paste(k,"Parcial", sep = "-")
+        colName <- paste(k,"Parcial", sep = "")
         M1834[,colName] <- M1834[,k] - M1834[,temp]
+        if (k == "Official.Time") {
+            paceName <- paste(k,"Pace", sep = "")
+            M1834[,paceName] <- M1834[,colName]/2
+        }
+        else {
+            paceName <- paste(k,"Pace", sep = "")
+            M1834[,paceName] <- M1834[,colName]/5
+        }
+        
         #print(summary(M1834[,k]))
         #print(sd(M1834[,k]))
     }
     else {
-        colName <- paste(k,"Parcial", sep = "-")
+        colName <- paste(k,"Parcial", sep = "")
         M1834[,colName] <- M1834[,k]
+        paceName <- paste(k,"Pace", sep = "")
+        M1834[,paceName] <- M1834[,colName]/5
     }
     temp = k
 }
+names(M1834) <- make.names(names(M1834))
 
 
 #Pinting the summary and std of all columns in c
-distance<-c("X5K-Parcial","X10K-Parcial","X15K-Parcial","X20K-Parcial","X25K-Parcial","X30K-Parcial","X35K-Parcial","X40K-Parcial","Official.Time-Parcial")
+distance<-c("X5KParcial","X10KParcial","X15KParcial","X20KParcial","X25KParcial","X30KParcial","X35KParcial","X40KParcial","Official.TimeParcial")
 for (k in distance) {
     print(k)
     print(summary(M1834[,k]))
@@ -66,6 +79,44 @@ for (k in order(cumsums)) {
     cat(cumsums[k],k+17, sep = ",")
     cat("/")
 }
+
+#Mitjana de pace d'elits i no elits
+Elite <- subset(M1834, M1834$Official.Time <= 9000)
+NoElite <- subset(M1834, M1834$Official.Time > 9000)
+summary(Elite$Pace)
+summary(NoElite$Pace)
+
+
+
+
+model <- lm(X5KParcial ~ Age + Pace, data = M1834)
+summary(model)
+
+model <- lm(X10KParcial ~ Age + Pace, data = M1834)
+summary(model)
+
+model <- lm(X15KParcial ~ Age + Pace, data = M1834)
+summary(model)
+
+model <- lm(X20KParcial ~ Age + Pace, data = M1834)
+summary(model)
+
+model <- lm(X25KParcial ~ Age + Pace, data = M1834)
+summary(model)
+
+model <- lm(X30KParcial ~ Age + Pace, data = M1834)
+summary(model)
+
+model <- lm(X35KParcial ~ Age + Pace, data = M1834)
+summary(model)
+
+model <- lm(Official.TimeParcial ~ Age + Pace, data = M1834)
+summary(model)
+
+
+
+
+              
 
 
 
