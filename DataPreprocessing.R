@@ -86,7 +86,15 @@ NoElite <- subset(M1834, M1834$Official.Time > 9000)
 summary(Elite$Pace)
 summary(NoElite$Pace)
 
-
+lr<-data.frame()
+distance<-c("X5KParcial", "X10KParcial","X15KParcial","X20KParcial","X25KParcial","X30KParcial","X35KParcial","X40KParcial")
+for (i in distance) {
+    f <- paste(i, "~ Age + Pace")
+    model = lm(as.formula(f), M1834)
+    lr <- rbind(lr, model$coefficients)
+}
+colnames(lr) <- c('B0','B1','B2')
+print(lr)
 
 
 model <- lm(X5KParcial ~ Age + Pace, data = M1834)
