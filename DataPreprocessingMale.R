@@ -1,6 +1,6 @@
 ######################################
 #Importing the dataset
-M1834 <- read.csv("C:/Users/ourio/Documents/Master DS/SMDE/Assignment 2/marathon_results_2015.csv", header = TRUE, fill = TRUE, sep = ",", na.strings = "", dec = ".", strip.white = TRUE)
+M1834 <- read.csv("./marathon_results_2015.csv", header = TRUE, fill = TRUE, sep = ",", na.strings = "", dec = ".", strip.white = TRUE)
 
 #Preprocessing
 library(lubridate)
