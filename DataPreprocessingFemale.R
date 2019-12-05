@@ -87,7 +87,7 @@ summary(Elite$Pace)
 summary(NoElite$Pace)
 
 lr<-data.frame()
-distance<-c("X5KParcial", "X10KParcial","X15KParcial","X20KParcial","X25KParcial","X30KParcial","X35KParcial","X40KParcial", "Official.Time")
+distance<-c("X5KParcial", "X10KParcial","X15KParcial","X20KParcial","X25KParcial","X30KParcial","X35KParcial","X40KParcial", "Official.TimeParcial")
 for (i in distance) {
     f <- paste(i, "~ Age + Pace")
     model = lm(as.formula(f), M1834)
@@ -97,8 +97,8 @@ colnames(lr) <- c('B0','B1','B2')
 print(lr)
 
 
-              
-
+model = lm(as.formula("~ Age + Pace"), M1834)
+lr <- rbind(lr, model$coefficients)
 
 
 
