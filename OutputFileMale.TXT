@@ -1,0 +1,32 @@
+**** EXPERIMENT WC=1 WATER=1 EAT=1 ****
+Replication result: 22961.52843676773
+Replication result: 22777.9156539496
+Replication result: 23667.26331386669
+**** EXPERIMENT WC=1 WATER=1 EAT=100 ****
+Replication result: 21719.83983700501
+Replication result: 22468.93070244956
+Replication result: 23036.28265878395
+**** EXPERIMENT WC=100 WATER=1 EAT=1 ****
+Replication result: 22570.94525037595
+Replication result: 21659.23723980904
+Replication result: 22228.25059706072
+**** EXPERIMENT WC=100 WATER=1 EAT=100 ****
+Replication result: 16749.2589208136
+Replication result: 16769.88029832388
+Replication result: 16951.68397008237
+**** EXPERIMENT WC=1 WATER=100 EAT=1 ****
+Replication result: 23134.54552126444
+Replication result: 22670.61068408561
+Replication result: 22465.86381976647
+**** EXPERIMENT WC=1 WATER=100  EAT=100 ****
+Replication result: 22474.0342796723
+Replication result: 22343.74070227846
+Replication result: 22466.67211903272
+**** EXPERIMENT WC=100 WATER=100 EAT=1 ****
+Replication result: 22045.38730728213
+Replication result: 22044.84726521882
+Replication result: 23532.02775773097
+**** EXPERIMENT WC=100 WATER=100  EAT=100 ****
+Replication result: 12792.72434223178
+Replication result: 12783.51262316515
+Replication result: 13109.84891997174
