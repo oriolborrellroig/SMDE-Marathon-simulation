@@ -121,7 +121,11 @@ summary(model)
 model <- lm(Official.TimeParcial ~ Age + Pace, data = M1834)
 summary(model)
 
-
+library(unrepx)
+#(---, +--, -+-, ++-, --+, +-+, -++, +++)
+answer <- c(23135.57,22408.35,22152.81,16823.61,22757.01,22428.15,22540.75,12895.36)
+factors <- c("Eat", "WC", "Water")
+yates(ans, factors)
 
 
               

@@ -101,5 +101,9 @@ model = lm(as.formula("~ Age + Pace"), M1834)
 lr <- rbind(lr, model$coefficients)
 
 
-
+library(unrepx)
+#(---, +--, -+-, ++-, --+, +-+, -++, +++)
+answer <- c(26315.76,25389.68,25650.62,19482.69,26032.80,25634.78,24791.20,15068.65)
+factors <- c("Eat", "WC", "Water")
+yates(answer, factors)
 
